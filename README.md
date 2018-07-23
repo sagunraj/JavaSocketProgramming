@@ -161,7 +161,7 @@ class UDPClient {
 ```
 
 #### Remote Method Invocation (RMI)
-
+![Image of RMI](https://github.com/sagunraj/JavaSocketProgramming/blob/master/RMI.jpg)
 **RMI Steps:**  
 1. Create the remote interface
 2. Implementation of remote interface
