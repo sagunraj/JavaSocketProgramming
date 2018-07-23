@@ -37,8 +37,8 @@ Steps for creating a TCP Client:
 4. Close the socket when the communication ends.
 
 TCP Server Program:
-import java.net.*;
-import java.io.*;
+import java.net.*;  
+import java.io.*;  
 public class ServerExample {
 	public static void main(String[] args) {
 		int port = 2316;
@@ -113,3 +113,48 @@ DatagramPacket
 The constructors along with their descriptions are:
 - DatagramPacket(byte data[], int length) -> creates a DatagramPacket for receiving the packets of length in the buffer.
 - DatagramPacket(byte data[], int length, InetAddress ipAddress, int portnumber) -> creates a DatagramPacket for sending packets of length to the specified port number on the specified host.
+
+**UDPServer.java**  
+import java.net.*;  
+import java.io.*;  
+import java.util.*;  
+class UDPServer {  
+	public static void main(String args[]) throws Exception {  
+		int serverportno = 1139;  
+		int clientportno = 1140;  
+		try {  
+			DatagramSocket ds = new DatagramSocket(serverportno);  
+			//obtains the IP address for localhost  
+			InetAddress ipadd = InetAddress.getLocalHost();  
+			String pstr = "Hello, this is your message.";  
+			byte buf[] = pstr.getBytes();  
+			//creates a Datagram packet for sending the packets  
+			DatagramPacket sendPacket = new DatagramPacket(buf, buf.length, ipadd, clientportno);  
+			ds.send(sendPacket);  
+			ds.close();  
+		}  
+		catch(Exception e) {  
+			System.out.println(e.getMessage());  
+		}  
+	}   
+}
+
+**UDPClient.java**  
+import java.net.*;  
+import java.io.*;  
+class UDPClient {  
+	public static void main(String[] args) throws Exception {  
+			int serverport = 1139;  
+			int clientport = 1140;  
+			try {  
+				DatagramSocket ds = new DatagramSocket(clientportno);  
+				byte b[] = new byte[1024];  
+				DatagramPacket dp = new DatagramPacket(b, b.length);  
+				ds.receive(dp);  
+				System.out.println(new String(dp.getData());  
+			}  
+			catch(Exception e) {  
+				System.out.println(e.getMessage());  
+			}
+		}
+	}
