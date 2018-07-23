@@ -37,7 +37,7 @@ Steps for creating a TCP Client:
 4. Close the socket when the communication ends.
 
 TCP Server Program:
-import java.net.*;  
+```import java.net.*;  
 import java.io.*;  
 public class ServerExample {
 	public static void main(String[] args) {
@@ -66,9 +66,9 @@ public class ServerExample {
 		}
 	}
 }
-
+```
 TCP Client Program:
-import java.net.*;
+```import java.net.*;
 import java.io.*;
 public class ClientExample {
 	public static void main(String[] args) {
@@ -94,7 +94,7 @@ public class ClientExample {
 		}
 	}
 }			
-
+```
 
 #### UDP Socket Programming:
 
@@ -115,7 +115,7 @@ The constructors along with their descriptions are:
 - DatagramPacket(byte data[], int length, InetAddress ipAddress, int portnumber) -> creates a DatagramPacket for sending packets of length to the specified port number on the specified host.
 
 **UDPServer.java**  
-import java.net.*;  
+```import java.net.*;  
 import java.io.*;  
 import java.util.*;  
 class UDPServer {  
@@ -138,9 +138,9 @@ class UDPServer {
 		}  
 	}   
 }
-
+```
 **UDPClient.java**  
-import java.net.*;  
+```import java.net.*;  
 import java.io.*;  
 class UDPClient {  
 	public static void main(String[] args) throws Exception {  
@@ -158,3 +158,4 @@ class UDPClient {
 			}
 		}
 	}
+```
