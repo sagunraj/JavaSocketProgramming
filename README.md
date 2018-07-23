@@ -95,6 +95,61 @@ public class ClientExample {
 	}
 }			
 ```
+**TCP Client Server Chat Program**
+*Client.java*
+```
+import java.net.*;
+import java.io.*;
+public class Client{
+	static final int port=1011;
+	public static void main(String[] args) throws Exception{
+		Socket s=new Socket("localhost",port);
+		DataInputStream ds=new DataInputStream(s.getInputStream());
+		DataOutputStream os=new DataOutputStream(s.getOutputStream());
+		String clientmessage="";
+		String servermessage="";
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		while(!clientmessage.equals("stop")) {
+			clientmessage=br.readLine();
+			os.writeUTF(clientmessage);
+			os.flush();
+			servermessage=ds.readUTF();
+			System.out.println("From Server:"+servermessage);
+			
+		}
+		os.close();
+		s.close();
+	}
+}
+```
+
+*Server.java*
+```
+import java.io.*;
+import java.net.*;
+public class Server{
+	static final int port=1011;
+	public static void main(String[] args) throws Exception{
+		ServerSocket ss=new ServerSocket(port);
+		Socket s=ss.accept();
+		DataInputStream is=new DataInputStream(s.getInputStream());
+		DataOutputStream os=new DataOutputStream(s.getOutputStream());
+		String clientmessage="";
+		String servermessage="";
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		while(!clientmessage.equals("stop")) {
+			clientmessage=is.readUTF();
+			System.out.println("From Client:"+clientmessage);
+			servermessage=br.readLine();
+			os.writeUTF(servermessage);
+			os.flush();
+		}
+		os.close();
+		s.close();
+		ss.close();
+		
+	}
+}```
 
 #### UDP Socket Programming:
 
@@ -168,4 +223,4 @@ class UDPClient {
 3. Compile, stub and skeleton (rmic)
 4. Start the registry (rmi registry)
 5. Create and start server
-6. Crete and start client
+6. Create and start client
