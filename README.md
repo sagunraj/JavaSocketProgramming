@@ -21,7 +21,7 @@
 - Socket(InetAddress addresss, int portnumber) -> creates a socket and connects it to the specified port number at the specified IP address.
 - Socket(String hast, int portnumber) -> creates a socket and connects it to the specified port number on the named host.
 
-Steps for creating a TCP Server:
+**Steps for creating a TCP Server:**
 1. Open the server socket.
 2. Wait for the client request.
 3. Create I/O streams for communicating to the client.
@@ -30,13 +30,13 @@ Steps for creating a TCP Server:
 4. Communicate with the client.
 5. Close the socket.
 
-Steps for creating a TCP Client:
+**Steps for creating a TCP Client:**
 1. Create a socket object.
 2. Create I/O streams for communicating with the server.
 3. Communicate with the server.
 4. Close the socket when the communication ends.
 
-TCP Server Program:
+**TCP Server Program**
 ```import java.net.*;  
 import java.io.*;  
 public class ServerExample {
@@ -67,7 +67,7 @@ public class ServerExample {
 	}
 }
 ```
-TCP Client Program:
+**TCP Client Program:**
 ```import java.net.*;
 import java.io.*;
 public class ClientExample {
@@ -98,7 +98,7 @@ public class ClientExample {
 
 #### UDP Socket Programming:
 
-DatagramSocket
+**DatagramSocket**
 This class is used to send or recieve the datagram packets.
 The constructors along with their descriptions are:
 - DatagramSocket() -> Creates a datagram socket.
@@ -109,7 +109,7 @@ The methods along with their description are:
 - void send(DatagramPacket packet) -> sends packet to the ports.
 - void receive(DatagramPacket packet) -> Receives packet specified by packet fro the port.
 
-DatagramPacket
+**DatagramPacket**
 The constructors along with their descriptions are:
 - DatagramPacket(byte data[], int length) -> creates a DatagramPacket for receiving the packets of length in the buffer.
 - DatagramPacket(byte data[], int length, InetAddress ipAddress, int portnumber) -> creates a DatagramPacket for sending packets of length to the specified port number on the specified host.
@@ -159,3 +159,13 @@ class UDPClient {
 		}
 	}
 ```
+
+#### Remote Method Invocation (RMI)
+
+**RMI Steps:**  
+1. Create the remote interface
+2. Implementation of remote interface
+3. Compile, stub and skeleton (rmic)
+4. Start the registry (rmi registry)
+5. Create and start server
+6. Crete and start client
