@@ -95,7 +95,7 @@ public class ClientExample {
 	}
 }			
 ```
-**TCP Client Server Chat Program**
+**TCP Client Server Chat Program**  
 *Client.java*
 ```
 import java.net.*;
