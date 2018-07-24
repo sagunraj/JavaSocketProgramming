@@ -300,6 +300,6 @@ public class AddClient {
 - CORBA is a mechanism in software for normalizing the method call semantics between applications object residing either in the same address space (application) or remote address space (same host or remote host on a network).
 - CORBA uses an Interface Definition Language (IDL).
 
-*CORBA Architecture*
-![Image of RMI](https://github.com/sagunraj/JavaSocketProgramming/blob/master/corba-architecture.jpg)
+*CORBA Architecture*  
+![Image of RMI](https://github.com/sagunraj/JavaSocketProgramming/blob/master/corba-architecture.jpg)  
 - CORBA architecture uses IIOP (Internet Inter-Operable Protocol)
