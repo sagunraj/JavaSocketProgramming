@@ -284,3 +284,10 @@ System.out.println(e.getMessage());
 }
 }
 ```
+
+**How to run the codes given above?**
+1. javac *.java
+2. rmic AddC
+3. start rmiRegistry
+4. java AddServer
+5. java AddClient <path> <value>
