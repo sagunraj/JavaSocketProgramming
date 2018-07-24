@@ -237,6 +237,17 @@ double add(double d1, double d2) throws RemoteException;
 }
 ```
 
+*AddC.java*
+```
+import java.rmi.*;
+import java.rmi.server.*;
+public class AddC extends UnicastRemoteObject implements AddI {
+public AddC() throws RemoteException {}
+public double add(double d1, double d2) throws RemoteException {
+return d1+d2;
+}}
+```
+
 *AddServer.java*
 ```
 import java.net.*;
@@ -251,17 +262,6 @@ catch(Exception e) {
 System.out.println(e.getMessage());
 }
 }
-```
-
-*AddC.java*
-```
-import java.rmi.*;
-import java.rmi.server.*;
-public class AddC extends UnicastRemoteObject implements AddI {
-public AddC() throws RemoteException {}
-public double add(double d1, double d2) throws RemoteException {
-return d1+d2;
-}}
 ```
 
 *AddClient.java*
