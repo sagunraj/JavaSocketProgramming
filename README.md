@@ -290,4 +290,4 @@ System.out.println(e.getMessage());
 2. rmic AddC
 3. start rmiRegistry
 4. java AddServer
-5. java AddClient <path> <value>
+5. java AddClient <path> <args>
