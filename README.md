@@ -216,7 +216,7 @@ class UDPClient {
 	}
 ```
 
-#### Remote Method Invocation (RMI)
+### Remote Method Invocation (RMI)
 ![Image of RMI](https://github.com/sagunraj/JavaSocketProgramming/blob/master/RMI.jpg)
 **RMI Steps:**  
 1. Create the remote interface
@@ -233,7 +233,7 @@ import java.rmi.remote;
 import java.rmi.remoteException;
 import java.rmi.*;
 public interface AddI extends Remote {
-double add(double d1, double d2) throws RemoteException;
+	double add(double d1, double d2) throws RemoteException;
 }
 ```
 
@@ -242,10 +242,11 @@ double add(double d1, double d2) throws RemoteException;
 import java.rmi.*;
 import java.rmi.server.*;
 public class AddC extends UnicastRemoteObject implements AddI {
-public AddC() throws RemoteException {}
-public double add(double d1, double d2) throws RemoteException {
-return d1+d2;
-}}
+	public AddC() throws RemoteException {}
+	public double add(double d1, double d2) throws RemoteException {
+		return d1+d2;
+	}
+}
 ```
 
 *AddServer.java*
@@ -253,14 +254,14 @@ return d1+d2;
 import java.net.*;
 import java.rmi.*;
 public class AddServer {
-public static void main(String[] args) {
-try{
-AddC addI = new AddC();
-Naming.rebind("AddServer", addc);
-}
-catch(Exception e) {
-System.out.println(e.getMessage());
-}
+	public static void main(String[] args) {
+		try{
+			AddC addI = new AddC();
+			Naming.rebind("AddServer", addc);
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+	}
 }
 ```
 
@@ -268,20 +269,20 @@ System.out.println(e.getMessage());
 ```
 import java.rmi.Naming;
 public class AddClient {
-public static void main(String[] args) {
-try {
-String addServerURL = "rmi:11" + args[0] + "/AddServer";
-AddI addI = (AddI) Naming.Lookup(addServerURL);
-System.out.println("First no.:" + args[1]);
-double d1 = Double.ValueOf(args[1]).doubleValue();
-System.out.println("Second no.:" + args[2]);
-double d2 = Double.ValueOf(args[2]).doubleValue();
-System.out.println("Sum is:" + addI.add(d1,d2);
-}
-catch (Exception e) {
-System.out.println(e.getMessage());
-}
-}
+	public static void main(String[] args) {
+		try {
+			String addServerURL = "rmi:11" + args[0] + "/AddServer";
+			AddI addI = (AddI) Naming.Lookup(addServerURL);
+			System.out.println("First no.:" + args[1]);
+			double d1 = Double.ValueOf(args[1]).doubleValue();
+			System.out.println("Second no.:" + args[2]);
+			double d2 = Double.ValueOf(args[2]).doubleValue();
+			System.out.println("Sum is:" + addI.add(d1,d2);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
 ```
 
@@ -291,3 +292,14 @@ System.out.println(e.getMessage());
 3. start rmiRegistry
 4. java AddServer
 5. java AddClient <path> <args>
+
+### CORBA (Common Object Request Broker Architecture)
+- OMG (Object Management Group) was formed in 1989.
+- CORBA is a standard defined by OMG that enables software components written in multiple computer languages and running on  multiple computers to work together.
+- The Object Request Borker (ORB) enables clients to invoke methods in a remote object.
+- CORBA is a mechanism in software for normalizing the method call semantics between applications object residing either in the same address space (application) or remote address space (same host or remote host on a network).
+- CORBA uses an Interface Definition Language (IDL).
+
+*CORBA Architecture*
+![Image of RMI](https://github.com/sagunraj/JavaSocketProgramming/blob/master/corba-architecture.jpg)
+- CORBA architecture uses IIOP (Internet Inter-Operable Protocol)
