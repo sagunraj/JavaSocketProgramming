@@ -225,3 +225,62 @@ class UDPClient {
 4. Start the registry (rmi registry)
 5. Create and start server
 6. Create and start client
+
+**RMI Example:**
+*AddI.java*
+```
+import java.rmi.remote;
+import java.rmi.remoteException;
+import java.rmi.*;
+public interface AddI extends Remote {
+double add(double d1, double d2) throws RemoteException;
+}
+```
+
+*AddServer.java*
+```
+import java.net.*;
+import java.rmi.*;
+public class AddServer {
+public static void main(String[] args) {
+try{
+AddC addI = new AddC();
+Naming.rebind("AddServer", addc);
+}
+catch(Exception e) {
+System.out.println(e.getMessage());
+}
+}
+```
+
+*AddC.java*
+```
+import java.rmi.*;
+import java.rmi.server.*;
+public class AddC extends UnicastRemoteObject implements AddI {
+public AddC() throws RemoteException {}
+public double add(double d1, double d2) throws RemoteException {
+return d1+d2;
+}}
+```
+
+*AddClient.java*
+```
+import java.rmi.Naming;
+public class AddClient {
+public static void main(String[] args) {
+try {
+String addServerURL = "rmi:11" + args[0] + "/AddServer";
+AddI addI = (AddI) Naming.Lookup(addServerURL);
+System.out.println("First no.:" + args[1]);
+double d1 = Double.ValueOf(args[1]).doubleValue();
+System.out.println("Second no.:" + args[2]);
+double d2 = Double.ValueOf(args[2]).doubleValue();
+System.out.println("Sum is:" + addI.add(d1,d2);
+}
+catch (Exception e) {
+System.out.println(e.getMessage());
+}
+}
+}
+```
